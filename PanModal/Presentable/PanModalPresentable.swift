@@ -20,7 +20,6 @@ import UIKit
  ```
  */
 public protocol PanModalPresentable: AnyObject {
-
     /**
      The scroll view embedded in the view controller.
      Setting this value allows for seamless transition scrolling between the embedded scroll view
@@ -48,7 +47,7 @@ public protocol PanModalPresentable: AnyObject {
     /**
      The height of the pan modal container view
      when in the longForm presentation state.
-     
+
      This value is capped to .max, if provided value exceeds the space available.
 
      Default value is .max.
@@ -71,35 +70,35 @@ public protocol PanModalPresentable: AnyObject {
     var springDamping: CGFloat { get }
 
     /**
-     The transitionDuration value is used to set the speed of animation during a transition,
-     including initial presentation.
+      The transitionDuration value is used to set the speed of animation during a transition,
+      including initial presentation.
 
-     Default value is 0.5.
-    */
+      Default value is 0.5.
+     */
     var transitionDuration: Double { get }
 
     /**
-     The animation options used when performing animations on the PanModal, utilized mostly
-     during a transition.
+      The animation options used when performing animations on the PanModal, utilized mostly
+      during a transition.
 
-     Default value is [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState].
-    */
+      Default value is [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState].
+     */
     var transitionAnimationOptions: UIView.AnimationOptions { get }
 
     /**
-     The background view color.
+      The background view color.
 
-     - Note: This is only utilized at the very start of the transition.
+      - Note: This is only utilized at the very start of the transition.
 
-     Default Value is black with alpha component 0.7.
-    */
+      Default Value is black with alpha component 0.7.
+     */
     var panModalBackgroundColor: UIColor { get }
 
     /**
-     The drag indicator view color.
+      The drag indicator view color.
 
-     Default value is light gray.
-    */
+      Default value is light gray.
+     */
     var dragIndicatorBackgroundColor: UIColor { get }
 
     /**
@@ -143,12 +142,12 @@ public protocol PanModalPresentable: AnyObject {
     var allowsTapToDismiss: Bool { get }
 
     /**
-     A flag to toggle user interactions on the container view.
+      A flag to toggle user interactions on the container view.
 
-     - Note: Return false to forward touches to the presentingViewController.
+      - Note: Return false to forward touches to the presentingViewController.
 
-     Default is true.
-    */
+      Default is true.
+     */
     var isUserInteractionEnabled: Bool { get }
 
     /**
@@ -172,14 +171,16 @@ public protocol PanModalPresentable: AnyObject {
      Default value is true.
      */
     var showDragIndicator: Bool { get }
+    var dragIndicatorYOffset: CGFloat { get }
+    var dragIndicatorSize: CGSize { get }
 
     /**
-     A flag to determine if form dismiss from long form,
-     it does not stop in short form height when value is true.
-     Default value is false.
-    */
+      A flag to determine if form dismiss from long form,
+      it does not stop in short form height when value is true.
+      Default value is false.
+     */
     var shouldDismissWhenLongForm: Bool { get }
-  
+
     /**
      A flag to determine if the transition should trigger the parent
      view controller lifecycle.
@@ -189,7 +190,7 @@ public protocol PanModalPresentable: AnyObject {
 
     /**
      Asks the delegate if the pan modal should respond to the pan modal gesture recognizer.
-     
+
      Return false to disable movement on the pan modal but maintain gestures on the presented view.
 
      Default value is true.

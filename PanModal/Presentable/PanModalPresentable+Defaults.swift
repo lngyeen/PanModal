@@ -12,7 +12,6 @@ import UIKit
  Default values for the PanModalPresentable.
  */
 public extension PanModalPresentable where Self: UIViewController {
-
     var topOffset: CGFloat {
         topLayoutOffset + 21.0
     }
@@ -22,9 +21,8 @@ public extension PanModalPresentable where Self: UIViewController {
     }
 
     var longFormHeight: PanModalHeight {
-
         guard let scrollView = panScrollable
-            else { return .maxHeight }
+        else { return .maxHeight }
 
         // called once during presentation and stored
         scrollView.layoutIfNeeded()
@@ -65,9 +63,8 @@ public extension PanModalPresentable where Self: UIViewController {
     }
 
     var allowsExtendedPanScrolling: Bool {
-
         guard let scrollView = panScrollable
-            else { return false }
+        else { return false }
 
         scrollView.layoutIfNeeded()
         return scrollView.contentSize.height > (scrollView.frame.height - bottomLayoutOffset)
@@ -97,21 +94,27 @@ public extension PanModalPresentable where Self: UIViewController {
         shouldRoundTopCorners
     }
 
+    var dragIndicatorYOffset: CGFloat {
+        return 8
+    }
+
+    var dragIndicatorSize: CGSize {
+        return CGSize(width: 36.0, height: 5.0)
+    }
+
     var shouldDismissWhenLongForm: Bool {
         false
     }
-  
+
     var shouldUseAppearanceTransitions: Bool {
-      false
+        false
     }
 
     func shouldRespond(to panModalGestureRecognizer: UIPanGestureRecognizer) -> Bool {
         true
     }
 
-    func willRespond(to panModalGestureRecognizer: UIPanGestureRecognizer) {
-
-    }
+    func willRespond(to panModalGestureRecognizer: UIPanGestureRecognizer) {}
 
     func shouldTransition(to state: PanModalPresentationController.PresentationState) -> Bool {
         true
@@ -121,16 +124,10 @@ public extension PanModalPresentable where Self: UIViewController {
         false
     }
 
-    func willTransition(to state: PanModalPresentationController.PresentationState) {
+    func willTransition(to state: PanModalPresentationController.PresentationState) {}
 
-    }
+    func panModalWillDismiss(fromGestureRecognizer: Bool) {}
 
-    func panModalWillDismiss(fromGestureRecognizer: Bool) {
-
-    }
-
-    func panModalDidDismiss(fromGestureRecognizer: Bool) {
-
-    }
+    func panModalDidDismiss(fromGestureRecognizer: Bool) {}
 }
 #endif
